@@ -11,7 +11,6 @@ app.get("/webhook", (req, res) => {
   const mode = req.query["hub.mode"];
   const token = req.query["hub.verify_token"];
   const challenge = req.query["hub.challenge"];
-  console.log(req.body);
   if (mode && token === process.env.VERIFY_TOKEN) {
     res.status(200).send(challenge);
   } else {
@@ -24,6 +23,7 @@ app.post("/webhook", async (req, res) => {
   const messaging = entry.messaging[0];
   const senderId = messaging.sender.id;
   const messageText = messaging.message.text;
+  console.log(req.body);
 
   let replyText;
 
