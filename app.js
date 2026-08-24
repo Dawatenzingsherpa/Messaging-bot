@@ -5,7 +5,7 @@ const app = express();
 const axios = require("axios");
 const PORT = process.env.PORT || 3000;
 
-const url = `https://graph.facebook.com/v25.0/me/messages`;
+const url = `https://graph.facebook.com/v26.0/me/messages`;
 app.use(express.json());
 app.get("/webhook", (req, res) => {
   const mode = req.query["hub.mode"];
