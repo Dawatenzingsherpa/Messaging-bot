@@ -43,19 +43,25 @@ app.post("/webhook", async (req, res) => {
   res.sendStatus(200);
 });
 
-async function sendReply(senderId, ReplyText) {
-  await axios.post(
-    url,
-    {
-      recipient: { id: senderId },
-      message: { text: ReplyText },
-    },
-    {
-      params: {
-        access_token: process.env.PAGE_ACCESS_TOKEN,
+async function sendReply(senderId, replyText) {
+  try {
+    const response = await axios.post(
+      url,
+      {
+        recipient: { id: senderId },
+        message: { text: replyText },
       },
-    },
-  );
+      {
+        params: {
+          access_token: process.env.PAGE_ACCESS_TOKEN,
+        },
+      },
+    );
+
+    console.log("Facebook response:", response.data);
+  } catch (error) {
+    console.log("Facebook error:", error.response?.data || error.message);
+  }
 }
 
 app.listen(PORT, () => {
