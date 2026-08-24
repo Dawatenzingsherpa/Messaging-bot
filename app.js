@@ -24,7 +24,6 @@ app.post("/webhook", async (req, res) => {
   const messaging = entry.messaging[0];
   const senderId = messaging.sender.id;
   const messageText = messaging.message.text;
-  console.log(senderId, message);
 
   let replyText;
 
