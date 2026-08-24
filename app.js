@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const PORT = process.env.PORT || 3000;
 
 const url = `https://graph.facebook.com/v25.0/me/messages`;
 app.use(express.json());
@@ -58,6 +59,6 @@ async function sendReply(senderId, ReplyText) {
   );
 }
 
-app.listen(3000, () => {
-  console.log("Server started at 3000 port");
+app.listen(PORT, () => {
+  console.log(`Server started at ${PORT} port`);
 });
