@@ -47,6 +47,7 @@ app.post("/webhook", async (req, res) => {
       messageText == "start"
     ) {
       await sendReply(senderId, "Hello! 👋 Welcome to Dawa Liquor Store.");
+      await sendButtonReply(senderId);
     } else {
       await sendReply(
         senderId,
