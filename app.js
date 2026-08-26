@@ -22,7 +22,7 @@ app.post("/webhook", async (req, res) => {
   const entry = req.body.entry[0];
   const messaging = entry.messaging[0];
   const senderId = messaging.sender.id;
-  const messageText = messaging.message.text.toLowerCase();
+  const messageText = messaging?.message?.text?.toLowerCase();
 
   if (messaging.postback) {
     const payload = messaging.postback.payload;
@@ -47,13 +47,13 @@ app.post("/webhook", async (req, res) => {
       messageText == "start"
     ) {
       await sendReply(senderId, "Hello! 👋 Welcome to Dawa Liquor Store.");
+    } else {
+      await sendReply(
+        senderId,
+        "Sorry, I didn't understand that. Please choose an option below.",
+      );
+      await sendButtonReply(senderId);
     }
-  } else {
-    await sendReply(
-      senderId,
-      "Sorry, I didn't understand that. Please choose an option below.",
-    );
-    await sendButtonReply(senderId);
   }
 
   res.sendStatus(200);
