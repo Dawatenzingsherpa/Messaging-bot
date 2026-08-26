@@ -38,7 +38,6 @@ Then it shows:
 How can I help you?
 
 [ Order ]
-This project is for learning and development purposes.
-The chatbot was created as a practice project for learning Node.js, webhooks, APIs, and Facebook Messenger integration.
+
 [ Payment ]
 ##[ Support ]
